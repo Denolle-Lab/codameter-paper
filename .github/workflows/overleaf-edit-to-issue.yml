@@ -53,8 +53,19 @@ jobs:
 
       - name: Diff since the last forward sync and file/update an issue if changed
         env:
+          # NOTE: github.token is deliberately NOT used as a fallback here --
+          # it's scoped to this repo (codameter-paper) and cannot file issues
+          # on a different repo (Denolle-Lab/codameter). A cross-repo PAT is
+          # required; see the one-time setup note above.
           GH_TOKEN: ${{ secrets.CODAMETER_ISSUES_TOKEN }}
         run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::CODAMETER_ISSUES_TOKEN secret is not set on this repo (Denolle-Lab/codameter-paper)." \
+                 "See the one-time setup note at the top of this workflow file."
+            exit 1
+          fi
+          gh auth status
+
           author="$(git log -1 --format='%an')"
           echo "pushing commit author: $author"
           if [ "$author" = "codameter-sync[bot]" ]; then
