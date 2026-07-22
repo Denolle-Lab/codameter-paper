@@ -1,23 +1,23 @@
 %%%%% created on 19-02-2019
-%% for avoid the clashing with siunitx.sty 
+%% for avoid the clashing with siunitx.sty
 %
-\def\@maketitle{\newpage 
- \vspace*{7pt} 
- {\raggedright \sloppy 
-  {\reset@font\huge \bf \@title \par} 
-  \vskip 23pt 
-  {\reset@font\LARGE 
-\@author 
-\par} 
-  \vskip 23.75pt 
- } 
- \par\noindent 
+\def\@maketitle{\newpage
+ \vspace*{7pt}
+ {\raggedright \sloppy
+  {\reset@font\huge \bf \@title \par}
+  \vskip 23pt
+  {\reset@font\LARGE
+\@author
+\par}
+  \vskip 23.75pt
+ }
+ \par\noindent
  \ifGJ@mreferee
  \else
-  {\reset@font\small \@date \par} 
+  {\reset@font\small \@date \par}
    \vskip 22pt
- \fi 
-} 
+ \fi
+}
 
 
 \mark{{}{}}
@@ -30,6 +30,6 @@
 
 \newcommand\affilsize{\@setfontsize\affilsize\@viiipt\@xpt}
 \def\affil#1{{\vskip2pt\reset@font\affilsize\itshape#1\par}}
-\def\and{\reset@font\LARGE\vskip4pt} 
+\def\and{\reset@font\LARGE\vskip4pt}
 
 \endinput
